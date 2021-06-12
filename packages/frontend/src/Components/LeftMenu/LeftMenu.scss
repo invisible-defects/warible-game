@@ -9,9 +9,10 @@
         backdrop-filter: blur(70px);
 
         display: flex;
-        justify-content: space-between;
         flex-direction: column;
         align-items: center;
+
+        padding: 110px 0;
     }
 
     &-title {
@@ -19,5 +20,51 @@
         line-height: 61px;
         letter-spacing: 0.05em;
         color: rgba(117, 98, 78, 0.2);
+    }
+
+    &-time {
+        color: rgba(117, 98, 78, 0.2);
+        font-size: 24px;
+        line-height: 31px;
+
+        margin-bottom: 80px;
+    }
+
+    &-logo {
+        margin-bottom: 80px;
+    }
+
+    &-button {
+        width: 421px;
+        height: 83px;
+
+        background: rgba(167, 129, 92, 0.2);
+        /* IconInnerShadow */
+
+        box-shadow: inset 0px 2px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+
+        padding: 15px 20px;
+
+        .text {
+            font-size: 36px;
+            line-height: 46px;
+            color: #DAA986;
+            text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+
+            text-transform: uppercase;
+        }
+    }
+
+    &-policy {
+        text-align: center;
+        color: rgba(117, 98, 78, 0.2);
+        font-size: 18px;
+        line-height: 23px;
     }
 }
