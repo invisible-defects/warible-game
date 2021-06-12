@@ -3,10 +3,15 @@ import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+
+const supportsHistory = 'pushState' in window.history;
 
 render(
     <React.StrictMode>
-        <App />
+        <BrowserRouter forceRefresh={supportsHistory}>
+            <App />
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),
 );
