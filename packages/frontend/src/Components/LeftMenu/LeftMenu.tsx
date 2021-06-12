@@ -21,12 +21,6 @@ const LeftMenu: React.FunctionComponent = () => {
         }, 1000);
     }, []);
 
-    // .useEffect(() => {
-    //     if (!onboarding.current) {
-    //       onboarding.current = new MetaMaskOnboarding();
-    //     }
-    //   }, []);
-
     const OnClick = () => {
         history.push('/');
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PageWrapper from './Components/PageWrapper/PageWrapper';
-import GameMenu from './Pages/GameMenu/GameMenu';
+import GameMenu from './Pages/GameMenu/Game';
 import StartPage from './Pages/StartPage/StartPage';
 
 const App: React.FunctionComponent = () => {
