@@ -1,4 +1,4 @@
-.Game {
+.GamePage {
     width: 100%;
     height: 100%;
 
@@ -10,4 +10,9 @@
 
     box-shadow: inset -5px -5px 250px rgba(255, 255, 255, 0.02), inset 5px 5px 4px rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(70px);
+}
+
+.GameWrapper {
+    width: 100%;
+    flex: 1 1 auto;
 }
