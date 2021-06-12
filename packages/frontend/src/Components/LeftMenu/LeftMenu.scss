@@ -13,6 +13,10 @@
         align-items: center;
 
         padding: 110px 0;
+
+        padding-top: 80px;
+
+        position: relative;
     }
 
     &-title {
@@ -27,11 +31,13 @@
         font-size: 24px;
         line-height: 31px;
 
-        margin-bottom: 80px;
+        margin-bottom: 70px;
     }
 
     &-logo {
-        margin-bottom: 80px;
+        margin-bottom: 70px;
+        width: 212px;
+        height: 365px;
     }
 
     &-button {
@@ -66,5 +72,46 @@
         color: rgba(117, 98, 78, 0.2);
         font-size: 18px;
         line-height: 23px;
+
+        margin-top: 20px;
+    }
+
+    &-footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 60px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 25px;
+
+        .version {
+            color: rgba(117, 98, 78, 0.2);
+            letter-spacing: 0.05em;
+            font-size: 24px;
+            line-height: 31px;
+        }
+
+        .course {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.05em;
+            
+            color: rgba(117, 98, 78, 0.2);
+            font-size: 18px;
+            line-height: 23px;
+        }
     }
 }
