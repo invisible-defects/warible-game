@@ -1,12 +1,17 @@
 import React from 'react';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import PageWrapper from './Components/PageWrapper/PageWrapper';
+import GameMenu from './Pages/GameMenu/Game';
+import StartPage from './Pages/StartPage/StartPage';
 
 const App: React.FunctionComponent = () => {
     return (
-        <div className="App">
-            <video src="https://youtu.be/9kpv-xtFifk"></video>
-            <div className="test"></div>
-        </div>
+        <PageWrapper>
+            <Switch>
+                <Route exact path="/" component={GameMenu} />
+                <Route exact path="/login" component={StartPage} />
+            </Switch>
+        </PageWrapper>
     );
 };
 
