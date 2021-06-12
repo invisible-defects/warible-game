@@ -1,0 +1,17 @@
+{
+    "name": "warible",
+    "version": "0.1.0",
+    "description": "",
+    "private": true,
+    "workspaces": [
+      "packages/*"
+    ],
+    "scripts": {
+      "watch": "lerna run --parallel watch",
+      "frontend": "lerna run --parallel watch --scope=common --scope=frontend"
+    },
+    "devDependencies": {
+      "lerna": "^3.16.4",
+      "@lerna/filter-options": "3.20.0"
+    }
+  }
