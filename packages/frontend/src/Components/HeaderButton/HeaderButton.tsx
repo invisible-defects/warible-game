@@ -1,9 +1,9 @@
 import React from 'react';
 import './HeaderButton.scss';
-import { ReactComponent as Home } from '../../Assets/Svg/logo.svg';
-import { ReactComponent as Deck } from '../../Assets/Svg/logo.svg';
-import { ReactComponent as Inventary } from '../../Assets/Svg/logo.svg';
-import { ReactComponent as Fight } from '../../Assets/Svg/logo.svg';
+import { ReactComponent as Home } from '../../Assets/Svg/HeaderButtonsIcons/logo.svg';
+import { ReactComponent as Deck } from '../../Assets/Svg/HeaderButtonsIcons/cards.svg';
+import { ReactComponent as Inventary } from '../../Assets/Svg/HeaderButtonsIcons/chest.svg';
+import { ReactComponent as Fight } from '../../Assets/Svg/HeaderButtonsIcons/swords.svg';
 
 type CardType = 'Home' | 'Deck' | 'Inventary' | 'Fight';
 
