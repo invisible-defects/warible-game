@@ -10,6 +10,8 @@ body {
   padding: 0;
 
   font-family: 'Abel', sans-serif;
+
+  overflow-y: hidden;
 }
 
 code {

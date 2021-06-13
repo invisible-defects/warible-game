@@ -17,6 +17,9 @@
 
     font-size: 55px;
 
+    cursor: pointer;
+    user-select: none;
+
     &.active {
         background: rgba(117, 98, 78, 0.2);
         box-shadow: inset 0px 2px 7px rgba(0, 0, 0, 0.25);

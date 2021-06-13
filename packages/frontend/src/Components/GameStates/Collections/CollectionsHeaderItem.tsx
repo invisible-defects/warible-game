@@ -4,10 +4,15 @@ import './CollectionsHeaderItem.scss';
 interface CollectionsHeaderItemProps {
     num: number;
     active: boolean;
+    onClick: () => void;
 }
 
-const CollectionsHeaderItem: React.FunctionComponent<CollectionsHeaderItemProps> = ({ num, active }) => {
-    return <div className={`CollectionsHeaderItem ${active ? 'active' : ''}`}>{num}</div>;
+const CollectionsHeaderItem: React.FunctionComponent<CollectionsHeaderItemProps> = ({ num, active, onClick }) => {
+    return (
+        <div className={`CollectionsHeaderItem ${active ? 'active' : ''}`} onClick={onClick}>
+            {num}
+        </div>
+    );
 };
 
 export default CollectionsHeaderItem;
