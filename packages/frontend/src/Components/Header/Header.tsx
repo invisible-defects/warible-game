@@ -1,14 +1,19 @@
 import React from 'react';
-import HeaderButton from '../HeaderButton/HeaderButton';
+import HeaderButton, { CardType } from '../HeaderButton/HeaderButton';
 import './Header.scss';
 
-const Header: React.FunctionComponent = () => {
+interface HeaderProps {
+    setState: (type: CardType) => void;
+    currentState: CardType;
+}
+
+const Header: React.FunctionComponent<HeaderProps> = ({ setState, currentState }) => {
     return (
         <div className="Header">
-            <HeaderButton active type="Home" />
-            <HeaderButton active={false} type="Deck" />
-            <HeaderButton active={false} type="Inventary" />
-            <HeaderButton active={false} type="Fight" />
+            <HeaderButton setState={setState} active={currentState === 'Home'} type="Home" />
+            <HeaderButton setState={setState} active={currentState === 'Deck'} type="Deck" />
+            <HeaderButton setState={setState} active={currentState === 'Inventary'} type="Inventary" />
+            <HeaderButton setState={setState} active={currentState === 'Fight'} type="Fight" />
         </div>
     );
 };

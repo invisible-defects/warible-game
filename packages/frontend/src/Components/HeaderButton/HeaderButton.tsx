@@ -5,11 +5,12 @@ import { ReactComponent as Deck } from '../../Assets/Svg/HeaderButtonsIcons/card
 import { ReactComponent as Inventary } from '../../Assets/Svg/HeaderButtonsIcons/chest.svg';
 import { ReactComponent as Fight } from '../../Assets/Svg/HeaderButtonsIcons/swords.svg';
 
-type CardType = 'Home' | 'Deck' | 'Inventary' | 'Fight';
+export type CardType = 'Home' | 'Deck' | 'Inventary' | 'Fight';
 
 interface HeaderButtonProps {
     active: boolean;
     type: CardType;
+    setState: (type: CardType) => void;
 }
 
 const GetCardIcon = (cardType: CardType) => {
@@ -28,9 +29,9 @@ const GetCardIcon = (cardType: CardType) => {
     }
 };
 
-const HeaderButton: React.FunctionComponent<HeaderButtonProps> = ({ active, type }) => {
+const HeaderButton: React.FunctionComponent<HeaderButtonProps> = ({ active, type, setState }) => {
     return (
-        <div className={`HeaderButton ${active ? 'active' : ''}`}>
+        <div className={`HeaderButton ${active ? 'active' : ''}`} onClick={() => setState(type)}>
             <div className="HeaderButton-icon">{GetCardIcon(type)}</div>
         </div>
     );
