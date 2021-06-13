@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { MetaMaskProvider } from 'metamask-react';
 
 const supportsHistory = 'pushState' in window.history;
 
 render(
     <React.StrictMode>
         <BrowserRouter forceRefresh={supportsHistory}>
-            <App />
+            <MetaMaskProvider>
+                <App />
+            </MetaMaskProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root'),

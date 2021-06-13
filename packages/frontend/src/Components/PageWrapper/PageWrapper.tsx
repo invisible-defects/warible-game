@@ -6,7 +6,12 @@ interface PageWrapperProps {
 }
 
 const PageWrapper: React.FunctionComponent<PageWrapperProps> = ({ children }) => {
-    return <div className="PageWrapper">{children}</div>;
+    return (
+        <div>
+            <video className="PageWrapper" autoPlay loop muted src="videos/bg-vid.mp4" />
+            <div className="PageWrapper-content">{children}</div>
+        </div>
+    );
 };
 
 export default PageWrapper;
