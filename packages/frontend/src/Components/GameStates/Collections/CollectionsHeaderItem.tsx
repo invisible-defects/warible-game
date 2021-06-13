@@ -1,7 +1,13 @@
 import React from 'react';
+import './CollectionsHeaderItem.scss';
 
-const CollectionsHeaderItem: React.FunctionComponent = () => {
-    return null;
+interface CollectionsHeaderItemProps {
+    num: number;
+    active: boolean;
+}
+
+const CollectionsHeaderItem: React.FunctionComponent<CollectionsHeaderItemProps> = ({ num, active }) => {
+    return <div className={`CollectionsHeaderItem ${active ? 'active' : ''}`}>{num}</div>;
 };
 
 export default CollectionsHeaderItem;
