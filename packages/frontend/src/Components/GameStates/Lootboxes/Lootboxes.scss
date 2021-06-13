@@ -1,0 +1,14 @@
+.Lootboxes {
+    width: 100%;
+    height: 100%;
+
+    // padding: 0 140px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-container {
+        user-select: none;
+    }
+}
