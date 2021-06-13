@@ -8,7 +8,7 @@ import { useMetaMask } from 'metamask-react';
 const LeftMenu: React.FunctionComponent = () => {
     const [time, setTime] = useState<string>();
     const [active, setActive] = useState<boolean>(false);
-    const { status, connect } = useMetaMask();
+    const { status, connect, account } = useMetaMask();
 
     localStorage.removeItem('fromGame');
 
@@ -24,7 +24,7 @@ const LeftMenu: React.FunctionComponent = () => {
     };
 
     return status === 'connected' ? (
-        <Redirect to="/" />
+        <Redirect to={`/#${account}`} />
     ) : (
         <div className="LeftMenu-container">
             <div className="LeftMenu-title">Welcome to Warible</div>
