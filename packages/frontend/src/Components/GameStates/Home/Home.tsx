@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.scss';
 import { ReactComponent as Cards } from '../../../Assets/Svg/cards.svg';
 import { ReactComponent as Chest } from '../../../Assets/Svg/Chest.svg';
+import { ReactComponent as Swords } from '../../../Assets/Svg/big-swords.svg';
 
 const Home: React.FunctionComponent = () => {
     return (
@@ -16,7 +17,11 @@ const Home: React.FunctionComponent = () => {
                     <Chest />
                 </div>
             </div>
-            <div className="Home-container"></div>
+            <div className="Home-container">
+                <div className="Home-logo">
+                    <Swords />
+                </div>
+            </div>
         </div>
     );
 };

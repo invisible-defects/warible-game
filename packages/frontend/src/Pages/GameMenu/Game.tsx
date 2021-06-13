@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import GameView from '../../Components/Game/GameView';
+// import GameView from '../../Components/Game/GameView';
 import Home from '../../Components/GameStates/Home/Home';
 import Header from '../../Components/Header/Header';
 import { CardType } from '../../Components/HeaderButton/HeaderButton';
