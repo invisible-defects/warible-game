@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Collections from '../../Components/GameStates/Collections/Collections';
 // import GameView from '../../Components/Game/GameView';
 import Home from '../../Components/GameStates/Home/Home';
+import Lootboxes from '../../Components/GameStates/Lootboxes/Lootboxes';
 import Header from '../../Components/Header/Header';
 import { CardType } from '../../Components/HeaderButton/HeaderButton';
 import './Game.scss';
@@ -21,6 +22,9 @@ const Game: React.FunctionComponent = () => {
 
             case 'Deck':
                 return <Collections />;
+
+            case 'Inventary':
+                return <Lootboxes />;
         }
     };
 

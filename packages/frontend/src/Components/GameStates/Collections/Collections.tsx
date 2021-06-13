@@ -21,6 +21,9 @@ const Collections: React.FunctionComponent = () => {
                     {[...new Array(7)].map((data, index) => (
                         <div className="Collections-card">
                             <img src={`/game/card-f-${active}.png`} alt="card" />
+                            <div className="Collections-card-text">
+                                Replace with an NFT. C’mon, it’s not that expensive.
+                            </div>
                         </div>
                     ))}
                 </div>
