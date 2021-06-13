@@ -19,7 +19,9 @@ const Collections: React.FunctionComponent = () => {
             <div className="Collections-container">
                 <div className="Collections-cards">
                     {[...new Array(7)].map((data, index) => (
-                        <img className="Collections-card" src={`/game/card-f-${active}.png`} alt="card" />
+                        <div className="Collections-card">
+                            <img src={`/game/card-f-${active}.png`} alt="card" />
+                        </div>
                     ))}
                 </div>
             </div>

@@ -28,14 +28,14 @@
         padding: 44px 48px;
 
         display: flex;
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
+        
+        overflow: hidden;
     }
 
     &-cards {
         height: 100%;
+        min-width: max-content;
+        display: flex;
 
         overflow-y: hidden;
         overflow-x: scroll;
@@ -44,12 +44,23 @@
 
     &-card {
         height: 100%;
-        width: auto;
+        width: 486px;
 
         margin-right: 56px;
 
+        position: relative;
+
         &:last-child {
             margin-right: 0;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+
+        &-text {
+
         }
     }
 }
