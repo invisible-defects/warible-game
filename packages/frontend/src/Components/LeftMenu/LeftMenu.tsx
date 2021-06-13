@@ -10,6 +10,8 @@ const LeftMenu: React.FunctionComponent = () => {
     const [active, setActive] = useState<boolean>(false);
     const { status, connect } = useMetaMask();
 
+    localStorage.removeItem('fromGame');
+
     useEffect(() => {
         setInterval(() => {
             setTime(new Date().toLocaleString());

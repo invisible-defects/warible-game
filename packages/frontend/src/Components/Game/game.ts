@@ -574,6 +574,7 @@ class Game {
         playAgain.interactive = true;
         playAgain.buttonMode = true;
         playAgain.on('pointerdown', () => {
+            localStorage.setItem('fromGame', 'true');
             window.location.reload();
         });
         winScreen.addChild(playAgain);

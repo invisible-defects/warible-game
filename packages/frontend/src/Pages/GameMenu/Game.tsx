@@ -1,16 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
 import Collections from '../../Components/GameStates/Collections/Collections';
-// import GameView from '../../Components/Game/GameView';
+import GameView from '../../Components/Game/GameView';
 import Home from '../../Components/GameStates/Home/Home';
 import Header from '../../Components/Header/Header';
 import { CardType } from '../../Components/HeaderButton/HeaderButton';
 import './Game.scss';
 
 const Game: React.FunctionComponent = () => {
-    const [currentState, setCurrentState] = useState<CardType>('Home');
+    const flag = localStorage.getItem('fromGame');
+    const [currentState, setCurrentState] = useState<CardType>(flag === 'true' ? 'Fight' : 'Home');
 
     const SetState = (type: CardType) => {
+        localStorage.removeItem('fromGame');
         setCurrentState(type);
     };
 
@@ -21,16 +23,16 @@ const Game: React.FunctionComponent = () => {
 
             case 'Deck':
                 return <Collections />;
+
+            case 'Fight':
+                return <GameView />;
         }
     };
 
     return (
         <div className="GamePage">
             <Header setState={SetState} currentState={currentState} />
-            <div className="GameWrapper">
-                {/* <GameView /> */}
-                {GetCurrentComponent(currentState)}
-            </div>
+            <div className="GameWrapper">{GetCurrentComponent(currentState)}</div>
         </div>
     );
 };
