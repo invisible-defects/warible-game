@@ -1,3 +1,5 @@
+@import '../../styles';
+
 .LeftMenu {
     &-container {
         height: 100vh;
@@ -23,15 +25,14 @@
         font-size: 48px;
         line-height: 61px;
         letter-spacing: 0.05em;
-        color: rgba(117, 98, 78, 0.2);
+        @extend .text-concave;
     }
 
     &-time {
-        color: rgba(117, 98, 78, 0.2);
         font-size: 24px;
         line-height: 31px;
-
         margin-bottom: 70px;
+        @extend .text-concave;
     }
 
     &-logo {
@@ -61,12 +62,8 @@
         .text {
             font-size: 34px;
             line-height: 46px;
-            text-transform: uppercase;
             letter-spacing: 0.05em;
-
-            // text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-            color: rgba(117, 98, 78, 0.2);
-
+            @extend .text-concave;
             user-select: none;
         }
 
@@ -83,14 +80,12 @@
 
     &-policy {
         text-align: center;
-        color: rgba(117, 98, 78, 0.75);
         font-size: 18px;
         line-height: 23px;
-
         margin-top: 20px;
-
         user-select: none;
-        // text-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.75) inset;
+
+        @extend .text-concave;
     }
 
     &-footer {
@@ -107,12 +102,12 @@
         padding: 0 25px;
 
         .version {
-            color: rgba(117, 98, 78, 0.75);
             letter-spacing: 0.05em;
             font-size: 24px;
             line-height: 31px;
-
             user-select: none;
+
+            @extend .text-concave;
         }
 
         .course {
@@ -127,12 +122,12 @@
             align-items: center;
             justify-content: center;
             letter-spacing: 0.05em;
-            
-            color: rgba(117, 98, 78, 0.75);
             font-size: 18px;
             line-height: 23px;
 
             user-select: none;
+
+            @extend .text-concave;
         }
     }
 }
