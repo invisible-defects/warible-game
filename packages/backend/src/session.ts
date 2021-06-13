@@ -25,10 +25,10 @@ class Session {
 
         const s = this;
         this.callback = function (this: WebSocket, data: WebSocket.Data) {
-            const pIdx = s.players.findIndex(p => p.ws === this);
+            const pIdx = s.players.findIndex((p) => p.ws === this);
             const message = JSON.parse(data as string) as ToServer;
             s.onMessage(pIdx, message);
-        }
+        };
 
         for (const p of this.players) {
             p.ws.on('message', this.callback);
@@ -42,13 +42,15 @@ class Session {
         this.scores = [0, 0];
 
         this.send({
-            type: 'session_started'
+            type: 'session_started',
+            players: [this.players[0].id, this.players[1].id],
         });
 
         this.decks = [List(), List()];
     }
 
     onMessage(pIdx: number, message: ToServer) {
+        console.log({ pIdx, message });
         switch (message.type) {
             case 'my_deck': {
                 if (this.status !== 'preparing') {
@@ -75,7 +77,12 @@ class Session {
                     break;
                 }
 
-                const cardIdx = this.decks[pIdx].findIndex(c => c.id === message.id);
+                this.send({
+                    type: 'card_played',
+                    player: this.players[pIdx].id,
+                });
+
+                const cardIdx = this.decks[pIdx].findIndex((c) => c.id === message.id);
                 const card = this.decks[pIdx].get(cardIdx)!;
                 this.decks[pIdx] = this.decks[pIdx].remove(cardIdx);
 
@@ -108,50 +115,74 @@ class Session {
         this.send({
             type: 'turn_started',
             turnNumber: this.currentTurn,
-            reward: this.reward()
+            reward: this.reward(),
         });
     }
 
     checkForEndOfTurn() {
         const [c1, c2] = this.playedCards;
         if (c1 !== undefined && c2 !== undefined) {
-            const winner = getWinner([c1, c2]);
+            setTimeout(() => {
+                const winner = getWinner([c1, c2]);
 
-            let winnerId: string | undefined = undefined;
-            if (winner === -1) {
-                this.scores[0] += this.reward() / 2;
-                this.scores[1] += this.reward() / 2;
-            } else {
-                this.scores[winner] += this.reward();
-                winnerId = this.players[winner].id;
-            }
+                let winnerId: string | undefined = undefined;
+                if (winner === -1) {
+                    this.scores[0] += this.reward() / 2;
+                    this.scores[1] += this.reward() / 2;
+                } else {
+                    this.scores[winner] += this.reward();
+                    winnerId = this.players[winner].id;
+                }
 
-            const scores: {
-                [key: string]: number
-            } = _.fromPairs(this.scores.map((score, idx) => {
-                return [this.players[idx].id, score]
-            }));
+                const cards: {
+                    [key: string]: string;
+                } = _.fromPairs(
+                    this.playedCards.map((card, idx) => {
+                        return [this.players[idx].id, card!.id];
+                    }),
+                );
 
-            if (this.currentTurn == 12) {
+                const scores: {
+                    [key: string]: number;
+                } = _.fromPairs(
+                    this.scores.map((score, idx) => {
+                        return [this.players[idx].id, score];
+                    }),
+                );
+
                 this.send({
                     type: 'turn_ended',
                     winner: winnerId,
-                    scores
+                    cards,
+                    scores,
                 });
 
-                this.rewards = this.rewards.shift();
-                this.currentTurn++;
+                if (this.currentTurn == 12) {
+                    let gameWinnerId: string | undefined = undefined;
+                    if (this.scores[0] > this.scores[1]) {
+                        gameWinnerId = this.players[0].id;
+                    } else if (this.scores[0] < this.scores[1]) {
+                        gameWinnerId = this.players[1].id;
+                    }
+                    setTimeout(() => {
+                        this.send({
+                            type: 'session_ended',
+                            winner: gameWinnerId,
+                            cards,
+                            scores,
+                        });
 
-                this.startTurn();
-            } else {
-                this.send({
-                    type: 'session_ended',
-                    winner: winnerId,
-                    scores
-                });
+                        this.status = 'finished';
+                    }, 1500);
+                } else {
+                    this.rewards = this.rewards.shift();
+                    this.currentTurn++;
 
-                this.status = 'finished';
-            }
+                    setTimeout(() => {
+                        this.startTurn();
+                    }, 1500);
+                }
+            }, 500);
         }
     }
 }

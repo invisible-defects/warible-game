@@ -15,7 +15,7 @@ class Matchmaking {
         const mm = this;
         this.callback = function (this: WebSocket, data: WebSocket.Data) {
             mm.onMessage(this, data);
-        }
+        };
     }
 
     enqueue(ws: WebSocket) {
@@ -26,10 +26,12 @@ class Matchmaking {
         try {
             const message = JSON.parse(data as string);
 
+            console.log({ message });
+
             if (isHelloMsg(message)) {
                 const player: Player = {
                     id: message.id,
-                    ws
+                    ws,
                 };
 
                 ws.off('message', this.callback);
@@ -47,6 +49,7 @@ class Matchmaking {
             const p1 = this.queued.shift()!;
             const p2 = this.queued.shift()!;
 
+            console.log(`starting session with ${p1.id} and ${p2.id}`);
             this.manager.startSession([p1, p2]);
         }
     }
