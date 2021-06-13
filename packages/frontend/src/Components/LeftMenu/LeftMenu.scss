@@ -39,11 +39,11 @@
         margin-bottom: 70px;
         width: 212px;
         height: 365px;
-        user-select: none;
+        @extend .ns;
     }
 
     &-button {
-        width: 421px;
+        width: 400px;
         height: 83px;
 
         background: #DDA87E;
@@ -64,7 +64,11 @@
             line-height: 46px;
             letter-spacing: 0.05em;
             @extend .text-concave;
-            user-select: none;
+            @extend .ns;
+        }
+
+        img {
+            @extend .ns;
         }
 
         &.active {
@@ -72,8 +76,7 @@
             box-shadow: inset 0px 2px 10px rgba(0, 0, 0, 0.25);
 
             .text {
-                color: #DAA986;
-                box-shadow: none;
+                @extend .text-convex;
             }
         }
     }
@@ -83,8 +86,7 @@
         font-size: 18px;
         line-height: 23px;
         margin-top: 20px;
-        user-select: none;
-
+        @extend .ns;
         @extend .text-concave;
     }
 
@@ -105,8 +107,7 @@
             letter-spacing: 0.05em;
             font-size: 24px;
             line-height: 31px;
-            user-select: none;
-
+            @extend .ns;
             @extend .text-concave;
         }
 
@@ -125,8 +126,7 @@
             font-size: 18px;
             line-height: 23px;
 
-            user-select: none;
-
+            @extend .ns;
             @extend .text-concave;
         }
     }

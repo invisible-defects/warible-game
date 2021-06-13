@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import './LeftMenu.scss';
 import { ReactComponent as Logo } from '../../Assets/Svg/logo.svg';
-import { ReactComponent as Animal } from '../../Assets/Svg/animal.svg';
-import { ReactComponent as AnimalDark } from '../../Assets/Svg/animal-dark.svg';
 import { useEffect } from 'react';
-import MetaMaskOnboarding from '@metamask/onboarding';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { useMetaMask } from 'metamask-react';
 
 const LeftMenu: React.FunctionComponent = () => {
     const [time, setTime] = useState<string>();
     const [active, setActive] = useState<boolean>(false);
-    const [accounts, setAccounts] = React.useState([]);
-    const onboarding = React.useRef<MetaMaskOnboarding>();
-
-    const history = useHistory();
+    const { status, connect } = useMetaMask();
 
     useEffect(() => {
         setInterval(() => {
@@ -22,10 +17,13 @@ const LeftMenu: React.FunctionComponent = () => {
     }, []);
 
     const OnClick = () => {
-        history.push('/');
+        setActive(true);
+        connect();
     };
 
-    return (
+    return status === 'connected' ? (
+        <Redirect to="/" />
+    ) : (
         <div className="LeftMenu-container">
             <div className="LeftMenu-title">Welcome to Warible</div>
             <div className="LeftMenu-time">{time?.substr(12, 999)}</div>
@@ -33,13 +31,13 @@ const LeftMenu: React.FunctionComponent = () => {
                 <Logo />
             </div>
 
-            <div
-                className={`LeftMenu-button ${active ? 'active' : ''}`}
-                onPointerDown={() => setActive(true)}
-                onPointerUp={() => setActive(false)}
-            >
+            <div className={`LeftMenu-button ${active ? 'active' : ''}`} onClick={OnClick}>
                 <div className="text">connect metamask</div>
-                {active ? <Animal /> : <AnimalDark />}
+                {active ? (
+                    <img src="button-icons/metamask-convex.png" alt="MetaMask logo" />
+                ) : (
+                    <img src="button-icons/metamask-concave.png" alt="MetaMask logo" />
+                )}
             </div>
 
             <div className="LeftMenu-policy">
