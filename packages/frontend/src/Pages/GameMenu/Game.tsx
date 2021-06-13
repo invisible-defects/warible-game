@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import GameView from '../../Components/Game/GameView';
+import Collections from '../../Components/GameStates/Collections/Collections';
+// import GameView from '../../Components/Game/GameView';
 import Home from '../../Components/GameStates/Home/Home';
 import Header from '../../Components/Header/Header';
 import { CardType } from '../../Components/HeaderButton/HeaderButton';
@@ -13,12 +14,22 @@ const Game: React.FunctionComponent = () => {
         setCurrentState(type);
     };
 
+    const GetCurrentComponent = (type: CardType) => {
+        switch (type) {
+            case 'Home':
+                return <Home />;
+
+            case 'Deck':
+                return <Collections />;
+        }
+    };
+
     return (
         <div className="GamePage">
             <Header setState={SetState} currentState={currentState} />
             <div className="GameWrapper">
                 {/* <GameView /> */}
-                <Home />
+                {GetCurrentComponent(currentState)}
             </div>
         </div>
     );
