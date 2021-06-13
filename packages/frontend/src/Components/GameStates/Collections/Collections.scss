@@ -21,17 +21,35 @@
 
     &-container {
         width: 100%;
-        flex: 0 0 calc(100% - 138px);
+        // flex: 0 0 calc(100% - 138px);
+
+        height: 670px;
 
         padding: 44px 48px;
 
         display: flex;
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &-cards {
+        height: 100%;
+
+        overflow-y: hidden;
+        overflow-x: scroll;
+        white-space: nowrap;
     }
 
     &-card {
-        height: 667px;
-        width: 486px;
+        height: 100%;
+        width: auto;
 
         margin-right: 56px;
+
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }
